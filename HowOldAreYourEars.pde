@@ -10,3 +10,9 @@ void setup()
 void draw()
 {
 }
+
+//Full screen default code
+/*
+boolean sketchFullScreen() {
+  return true;
+}*/
