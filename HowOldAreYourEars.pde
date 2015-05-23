@@ -48,7 +48,7 @@ void draw()
 }
 
 void keyPressed() {
-  if (key == ' ' && firstTime == true)
+  if (key == 'y' && firstTime == true)
   {
     if (wave!=null&&out!=null)
     {
@@ -67,10 +67,6 @@ void keyPressed() {
     firstTime = false;
   }
   
-  if(key == 'y')
-  {
-    times++;
-  }
   if(key == 'n')
   {
     visualizer.displayAge = true;
@@ -81,8 +77,8 @@ void keyPressed() {
     times = 1;
   }
 }
-
+/*
 //Full screen default code
 boolean sketchFullScreen() {
   return true;
-}
+}*/
