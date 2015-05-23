@@ -81,8 +81,8 @@ void keyPressed() {
     times = 1;
   }
 }
-/*
+
 //Full screen default code
 boolean sketchFullScreen() {
   return true;
-}*/
+}
