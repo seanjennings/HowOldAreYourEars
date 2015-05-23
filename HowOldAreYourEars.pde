@@ -37,7 +37,7 @@ void setup()
 
 void draw()
 {
-  background(90);
+  background(0);
   stroke(0, 255, 0);
   visualizer.animation();
    
@@ -66,9 +66,23 @@ void keyPressed() {
     }
     firstTime = false;
   }
+  
+  if(key == 'y')
+  {
+    times++;
+  }
+  if(key == 'n')
+  {
+    visualizer.displayAge = true;
+  }
+  if(key == 'r')
+  {
+    visualizer.displayAge = false;
+    times = 1;
+  }
 }
-
+/*
 //Full screen default code
 boolean sketchFullScreen() {
   return true;
-}
+}*/

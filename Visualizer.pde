@@ -1,10 +1,11 @@
 class Visualizer
 {
   int hertz;
-  int averageAge;
+  String averageAge;
   boolean canHear;
   float line1;
   boolean firstRun;
+  boolean displayAge = false;
   
   Visualizer()
   {
@@ -13,16 +14,41 @@ class Visualizer
   
   //Visualizer
   void animation()
-  {
+  {/*
     for (int i = 0; i < in.bufferSize() - 1; i++)
     {
         line( i, line1 + in.left.get(i)*50, i+1, line1 + in.left.get(i+1)*50 );
+    }*/
+    for (int i = width/4; i < out.bufferSize() - 1; i++)
+    {
+      line( i, height/2 + out.left.get(i)*50, i+1, height/2 + out.left.get(i+1)*50 );
+      //line( i, 150 + out.right.get(i)*50, i+1, 150 + out.right.get(i+1)*50 );
     }
-  //  for (int i = 0; i < out.bufferSize() - 1; i++)
-    //{
-     // line( i, 50 + out.left.get(i)*50, i+1, 50 + out.left.get(i+1)*50 );
-     // line( i, 150 + out.right.get(i)*50, i+1, 150 + out.right.get(i+1)*50 );
-   // }
+    
+    switch(times)
+    {
+      case 1:
+        question(8000,"Everyone");
+        break;
+      case 2:
+        question(12000,"Under 50");
+        break;
+      case 3:
+        question(15000,"Under 40");
+        break;
+      case 4:
+        question(16000,"Under 30");
+        break;
+      case 5:
+        question(17000,"Under 24");
+        break;
+      case 6:
+        question(18000,"Under 24");
+        break;
+      case 7:
+        question(19000,"Under 20");
+        break;
+    }
   }
   
   // wave = new Oscil... etc.
@@ -108,7 +134,19 @@ class Visualizer
 }
   
   //Ask person if they can hear frequency, display average age, continue to next visualizer if true
-  void question()
+  void question(int hertz, String age)
   {
+    this.averageAge = age;
+    textAlign(CENTER);
+    textSize(width/16);
+    stroke(255);
+    text("Can you hear "+hertz+"Hz?", width/2, height/4);
+    if(displayAge)
+    {
+      text(averageAge, width/2, (height/4)*3);
+      textSize(width/32);
+      text("Press R to reset.", width/2, (height*0.85));
+    }
+    
   }
 }
