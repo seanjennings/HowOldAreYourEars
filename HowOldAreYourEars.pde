@@ -32,10 +32,11 @@ void setup()
   in = minim.getLineIn(Minim.MONO, width, sampleRate, 16);
   visualizer = new Visualizer();
   times = 1;
-  visualizer.playFrequency(times);
   
   font = createFont("SourceCodePro-Regular", 32);
   textFont(font);
+  
+  visualizer.playFrequency(times);
 }
 
 void draw()
