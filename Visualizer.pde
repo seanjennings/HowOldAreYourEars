@@ -6,6 +6,7 @@ class Visualizer
   float line1;
   boolean firstRun;
   boolean displayAge = false;
+  boolean displayControls = false;
   
   Visualizer()
   {
@@ -52,6 +53,39 @@ class Visualizer
         question(19000,"Over 20");
         break;
     }
+    
+    controls();
+  }
+  
+  void controls()
+  {
+    pushStyle();
+    
+    textAlign(LEFT);
+    noStroke();
+    
+    if(displayControls)
+    {
+      fill(255, 255, 255, 100);
+      rect(0,height - height/10,width*.60,height);
+      fill(255);
+      
+      textSize(height/40);
+      text("Help: H",width/200, height - height/40);
+      textSize(height/20);
+      text("Yes: Y",width/10, height - height/40);
+      text("No: N",width/10 * 2, height - height/40);
+      text("Reset: R",width/10 * 4, height - height/40);
+    }
+    else
+    {
+      textSize(height/40);
+      fill(255);
+      text("Help: H",width/200, height - height/40);
+    }
+    
+    popStyle();
+    
   }
   
   void overlay()

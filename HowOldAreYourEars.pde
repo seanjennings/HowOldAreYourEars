@@ -82,6 +82,10 @@ void keyPressed() {
     times = 1;
     visualizer.playFrequency(times);
   }
+  if(key == 'h')
+  {
+    visualizer.displayControls = !visualizer.displayControls;
+  }
 }
 /*
 //Full screen default code
