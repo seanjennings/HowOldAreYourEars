@@ -77,6 +77,7 @@ void keyPressed() {
   }
   if(key == 'r')
   {
+    visualizer.displayAge = false;
     times = 1;
     visualizer.playFrequency(times);
   }
