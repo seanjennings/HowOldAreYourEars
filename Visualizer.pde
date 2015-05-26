@@ -14,41 +14,53 @@ class Visualizer
   
   //Visualizer
   void animation()
-  {/*
+  {
+    fractalDraw();
+    /*
     for (int i = 0; i < in.bufferSize() - 1; i++)
     {
         line( i, line1 + in.left.get(i)*50, i+1, line1 + in.left.get(i+1)*50 );
     }*/
     for (int i = width/4; i < out.bufferSize() - 1; i++)
     {
-      line( i, height/2 + out.left.get(i)*50, i+1, height/2 + out.left.get(i+1)*50 );
+      line( i, height/2 + out.left.get(i)*500, i+1, height/2 + out.left.get(i+1)*500 );
       //line( i, 150 + out.right.get(i)*50, i+1, 150 + out.right.get(i+1)*50 );
     }
     
     switch(times)
     {
+      case 0:
+        text("SPACE", width/2, (height/4)*3);
+        break;
       case 1:
-        question(8000,"Everyone");
+        question(8000,"Every human can hear this!");
         break;
       case 2:
-        question(12000,"Under 50");
+        question(12000,"Over 50");
         break;
       case 3:
-        question(15000,"Under 40");
+        question(15000,"Over 40");
         break;
       case 4:
-        question(16000,"Under 30");
+        question(16000,"Over 30");
         break;
       case 5:
-        question(17000,"Under 24");
+        question(17000,"Over 24");
         break;
       case 6:
-        question(18000,"Under 24");
+        question(18000,"Over 24");
         break;
       case 7:
-        question(19000,"Under 20");
+        question(19000,"Over 20");
         break;
     }
+  }
+  
+  void overlay()
+  {
+    pushStyle();
+    
+    popStyle();
   }
   
   // wave = new Oscil... etc.
@@ -65,7 +77,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 8000, 0.5f, Waves.SINE );
+          wave = new Oscil( 8000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
 
@@ -75,7 +87,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 12000, 0.5f, Waves.SINE );
+          wave = new Oscil( 12000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -85,7 +97,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 15000, 0.5f, Waves.SINE );
+          wave = new Oscil( 15000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -95,7 +107,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 16000, 0.5f, Waves.SINE );
+          wave = new Oscil( 16000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -105,7 +117,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 17000, 0.5f, Waves.SINE );
+          wave = new Oscil( 17000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -115,7 +127,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 18000, 0.5f, Waves.SINE );
+          wave = new Oscil( 18000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -125,7 +137,7 @@ class Visualizer
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
-          wave = new Oscil( 19000, 0.5f, Waves.SINE );
+          wave = new Oscil( 19000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );
         break;
@@ -148,5 +160,55 @@ class Visualizer
       text("Press R to reset.", width/2, (height*0.85));
     }
     
+  }
+  
+  int nBranches = 6;
+  float startingLength = 290;
+  float phasor = 0.0;
+  float rate = 0.0005;
+  color bg = color(0, 8);
+   
+  PVector getVCoordinates(PVector v, float d, float a) {
+    return new PVector(v.x + d * cos(a), v.y + d * sin(a));
+  }
+  
+  void fractalDraw() 
+  {
+    pushStyle();
+    smooth();
+    strokeWeight(5);
+    fill(bg);
+    noStroke();
+    rect(0, 0, width, height);
+   
+    float sine = sin(phasor * TWO_PI);
+    float angle = map(sine, -1.0, 1.0, -HALF_PI, HALF_PI);
+    float divPoint = map(sine, -1.0, 1.0, 1.0, 0.5);
+     
+    for (int i = 0; i < nBranches; i++) {
+      float L = startingLength;
+      float a = TWO_PI / (float) nBranches * (float) i;
+      PVector v1 = new PVector(width / 2, height / 2);
+      PVector v2 = getVCoordinates(v1, L, a);
+       
+      while (L > 2) {
+        stroke(random(255), 255, 0, 32);
+        L *= 0.95;
+         
+        line(v1.x, v1.y, v2.x, v2.y);
+        a += angle;
+       
+        v1.x = lerp(v1.x, v2.x, divPoint);
+        v1.y = lerp(v1.y, v2.y, divPoint);
+         
+        v2 = getVCoordinates(v1, L, a);
+      }
+    }
+   
+    phasor += rate;
+    if (phasor >= 1.0) {
+      phasor -= 1.0;
+    }
+    popStyle();
   }
 }

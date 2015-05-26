@@ -40,6 +40,7 @@ void draw()
   background(0);
   stroke(0, 255, 0);
   visualizer.animation();
+  visualizer.overlay();
    
   if(!keyPressed)
   {
@@ -73,8 +74,7 @@ void keyPressed() {
   }
   if(key == 'r')
   {
-    visualizer.displayAge = false;
-    times = 1;
+    setup();
   }
 }
 /*
