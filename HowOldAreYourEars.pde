@@ -11,28 +11,31 @@ import ddf.minim.ugens.*;
 Project Name: How Old are Your Ears?
 Collaborators: Seán Jennings, Ciarán Ó Flatharta, Andrew McCormack
 */
-  int sampleRate = 44100;
-  int times;
-  Visualizer visualizer;
-  boolean firstTime;
-  Minim       minim;
+int sampleRate = 44100;
+int times;
+Visualizer visualizer;
+boolean firstTime;
+Minim minim;
 AudioOutput out;
 AudioInput in;
-Oscil       wave;
+Oscil wave;
+PFont font;
 
 void setup()
 {
   size(displayWidth, displayHeight);
+  
   firstTime = true;
-  background(0);
   minim = new Minim(this);
-  // use the getLineOut method of the Minim object to get an AudioOutput object
+  //use the getLineOut method of the Minim object to get an AudioOutput object
   out = minim.getLineOut();
   in = minim.getLineIn(Minim.MONO, width, sampleRate, 16);
   visualizer = new Visualizer();
   times = 1;
   visualizer.playFrequency(times);
-
+  
+  font = createFont("SourceCodePro-Regular", 32);
+  textFont(font);
 }
 
 void draw()
@@ -74,7 +77,8 @@ void keyPressed() {
   }
   if(key == 'r')
   {
-    setup();
+    times = 1;
+    visualizer.playFrequency(times);
   }
 }
 /*

@@ -23,15 +23,13 @@ class Visualizer
     }*/
     for (int i = width/4; i < out.bufferSize() - 1; i++)
     {
+      stroke(255);
       line( i, height/2 + out.left.get(i)*500, i+1, height/2 + out.left.get(i+1)*500 );
       //line( i, 150 + out.right.get(i)*50, i+1, 150 + out.right.get(i+1)*50 );
     }
     
     switch(times)
     {
-      case 0:
-        text("SPACE", width/2, (height/4)*3);
-        break;
       case 1:
         question(8000,"Every human can hear this!");
         break;
@@ -192,7 +190,7 @@ class Visualizer
       PVector v2 = getVCoordinates(v1, L, a);
        
       while (L > 2) {
-        stroke(random(255), 255, 0, 32);
+        stroke(0, 0, 255, 32);
         L *= 0.95;
          
         line(v1.x, v1.y, v2.x, v2.y);
