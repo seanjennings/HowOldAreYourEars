@@ -7,26 +7,22 @@ class Visualizer
   boolean firstRun;
   boolean displayAge = false;
   boolean displayControls = false;
+  int quaterSize;
   
   Visualizer()
   {
     line1 = height / 2;
+    quaterSize = (width / 4);
   }
   
   //Visualizer
   void animation()
   {
     fractalDraw();
-    /*
-    for (int i = 0; i < in.bufferSize() - 1; i++)
+    stroke(0, 155, 155);
+    for (int i = quaterSize; i < out.bufferSize() - quaterSize; i+= 4)
     {
-        line( i, line1 + in.left.get(i)*50, i+1, line1 + in.left.get(i+1)*50 );
-    }*/
-    for (int i = width/4; i < out.bufferSize() - 1; i++)
-    {
-      stroke(255);
-      line( i, height/2 + out.left.get(i)*500, i+1, height/2 + out.left.get(i+1)*500 );
-      //line( i, 150 + out.right.get(i)*50, i+1, 150 + out.right.get(i+1)*50 );
+      line( i, height/2 + out.left.get(i)*800, i+1, height/2 + out.left.get(i+1)*800 );
     }
     
     switch(times)

@@ -15,11 +15,13 @@ int sampleRate = 44100;
 int times;
 Visualizer visualizer;
 boolean firstTime;
+boolean started;
 Minim minim;
 AudioOutput out;
-AudioInput in;
 Oscil wave;
 PFont font;
+PFont font2;
+PImage splashBackground, stem, ditLogo;
 
 void setup()
 {
@@ -28,32 +30,64 @@ void setup()
   firstTime = true;
   minim = new Minim(this);
   //use the getLineOut method of the Minim object to get an AudioOutput object
-  out = minim.getLineOut();
-  in = minim.getLineIn(Minim.MONO, width, sampleRate, 16);
+  out = minim.getLineOut(Minim.MONO, width, sampleRate, 16);
   visualizer = new Visualizer();
   times = 1;
+  started = false;
   
-  font = createFont("SourceCodePro-Regular", 32);
-  textFont(font);
+  font = createFont("SourceCodePro-Regular", (height / 32));
+  font2 = createFont("Gulim-48", (height / 15));
   
-  visualizer.playFrequency(times);
+  splashBackground = loadImage("HowOldAreYourEars.jpg");
+  splashBackground.resize(width, height);
+  stem = loadImage("STEM_Matters.jpg");
+  stem.resize((width / 4), (height / 4));
+  ditLogo = loadImage("DIT_logocol.jpg");
+  ditLogo.resize((width / 4), (height / 3));
 }
 
-void draw()
-{
-  background(0);
-  stroke(0, 255, 0);
-  visualizer.animation();
-  visualizer.overlay();
-   
-  if(!keyPressed)
+public void draw()
+{ 
+  if(!started)
   {
-    firstTime = true;
+    background(255);
+    stroke(0);
+    fill(0);
+    image(splashBackground, 0, 0);
+    image(stem, 0, 0);
+    image(ditLogo, (width - (width / 3.5f)), (height - (height / 2.7f)));
+    textFont(font);
+    text("Program created by DT228 Computer Science students:", (width / 1.8), height / 18);
+    text("Andrew McCormack, Ciarán Ó Flatharta & Seán Jennings", (width / 1.8), height / 12);
+    textFont(font2);
+    text("Press enter to begin!", (width / 3), height - 20);
+  }
+  
+  else
+  {
+    background(0);
+    fill(255);
+    stroke(0, 255, 0);
+    textFont(font);
+    visualizer.animation();
+    visualizer.overlay();  
+    
+    if(!keyPressed)
+    {
+      firstTime = true;
+    }
   }
 }
 
-void keyPressed() {
-  if (key == 'y' && firstTime == true)
+public void keyPressed() {
+  if(key == ENTER && !started)
+  {
+    times = 1;
+    visualizer.playFrequency(times);
+    started = true;
+  }
+    
+  if (key == 'y' && firstTime == true && started)
   {
     if (wave!=null&&out!=null)
     {
@@ -72,23 +106,22 @@ void keyPressed() {
     firstTime = false;
   }
   
-  if(key == 'n')
+  if(key == 'n' && started)
   {
     visualizer.displayAge = true;
-  }
-  if(key == 'r')
+  } 
+  if(key == 'r' && started)
   {
     visualizer.displayAge = false;
     times = 1;
     visualizer.playFrequency(times);
   }
-  if(key == 'h')
+  if(key == 'h' && started)
   {
     visualizer.displayControls = !visualizer.displayControls;
   }
 }
-/*
-//Full screen default code
-boolean sketchFullScreen() {
+
+public boolean sketchFullScreen() {
   return true;
-}*/
+}
