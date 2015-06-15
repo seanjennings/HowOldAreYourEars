@@ -186,8 +186,38 @@ class Visualizer
       text(averageAge, width/2, (height/4)*3);
       textSize(width/32);
       text("Press R to reset.", width/2, (height*0.85));
+      text("Press F for hearing facts.", width/2, (height*0.95));
+    }
+  }
+  
+  void facts()
+  {
+    pushStyle();
+    textAlign(LEFT);
+    fill(0);
+    textSize(width/40);
+    
+    background(255);
+    switch(displayFacts)
+    {
+      case 1:
+      {
+        facts1.resize(width, height);
+        image(facts1, 0, 0);
+        text("Press ENTER to continue", 10, height/15);
+        break;
+      }
+      
+      case 2:
+      {
+        facts2.resize(width, height);
+        image(facts2, 0, 0);
+        text("Press R to reset", 10, height/15);
+        break;
+      }
     }
     
+    popStyle();
   }
   
   int nBranches = 6;

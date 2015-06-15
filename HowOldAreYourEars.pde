@@ -12,27 +12,30 @@ Project Name: How Old are Your Ears?
 Collaborators: Seán Jennings, Ciarán Ó Flatharta, Andrew McCormack
 */
 int sampleRate = 44100;
-int times;
+int times, facts;
 Visualizer visualizer;
 boolean firstTime;
 boolean started;
+int displayFacts;
 Minim minim;
 AudioOutput out;
 Oscil wave;
 PFont font;
 PFont font2;
-PImage splashBackground, stem, ditLogo;
+PImage splashBackground, stem, ditLogo, facts1, facts2;
 
 void setup()
 {
   size(displayWidth, displayHeight);
   
   firstTime = true;
+  displayFacts = 0;
   minim = new Minim(this);
   //use the getLineOut method of the Minim object to get an AudioOutput object
   out = minim.getLineOut(Minim.MONO, width, sampleRate, 16);
   visualizer = new Visualizer();
   times = 1;
+  facts = 1;
   started = false;
   
   font = createFont("SourceCodePro-Regular", (height / 32));
@@ -44,6 +47,8 @@ void setup()
   stem.resize((width / 4), (height / 4));
   ditLogo = loadImage("DIT_logocol.jpg");
   ditLogo.resize((width / 4), (height / 3));
+  facts1 = loadImage("end_slide_1.png");
+  facts2 = loadImage("end_slide_2.png");
 }
 
 public void draw()
@@ -57,10 +62,15 @@ public void draw()
     image(stem, 0, 0);
     image(ditLogo, (width - (width / 3.5f)), (height - (height / 2.7f)));
     textFont(font);
-    text("Program created by DT228 Computer Science students:", (width / 1.8), height / 18);
-    text("Andrew McCormack, Ciarán Ó Flatharta & Seán Jennings", (width / 1.8), height / 12);
+    text("Program created by DT228 Computer Science students:", (width / 1.9), height / 18);
+    text("Andrew McCormack, Ciarán Ó Flatharta & Seán Jennings", (width / 1.9), height / 11);
     textFont(font2);
     text("Press enter to begin!", (width / 3), height - 20);
+  }
+  
+  else if(displayFacts != 0)
+  {
+    visualizer.facts();
   }
   
   else
@@ -112,9 +122,19 @@ public void keyPressed() {
   } 
   if(key == 'r' && started)
   {
+    displayFacts = 0;
     visualizer.displayAge = false;
     times = 1;
     visualizer.playFrequency(times);
+  }
+  if(key == 'f' && started)
+  {
+    //disable previous frequency with mp3 implementation before displaying facts
+    displayFacts = 1;
+  }
+  if(key == ENTER && started && ( displayFacts > 0 && displayFacts < 2 ) )
+  {
+    displayFacts++;
   }
   if(key == 'h' && started)
   {
