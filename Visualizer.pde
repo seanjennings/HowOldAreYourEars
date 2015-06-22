@@ -100,74 +100,88 @@ class Visualizer
       {
       
         case 1:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
         
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 8000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[6].pause();
+          frequencies[0].loop();
 
         break;
         case 2:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 12000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[0].pause();
+          frequencies[1].loop();
         break;
         
         case 3:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 15000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[1].pause();
+          frequencies[2].loop();
         break;
         
         case 4:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 16000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[2].pause();
+          frequencies[3].loop();
         break;
         
         case 5:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 17000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[3].pause();
+          frequencies[4].loop();
         break;
         
         case 6:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 18000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[4].pause();
+          frequencies[5].loop();
         break;
         
         case 7:
-        if (wave!=null&&out!=null)
+        /*if (wave!=null&&out!=null)
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 19000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );
+          wave.patch( out );*/
+          frequencies[5].pause();
+          frequencies[6].loop();
         break;
   }    
   
