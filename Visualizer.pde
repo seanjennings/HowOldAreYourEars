@@ -109,6 +109,11 @@ class Visualizer
           // patch the Oscil to the output
           wave.patch( out );*/
           frequencies[6].pause();
+          frequencies[5].pause();
+          frequencies[4].pause();
+          frequencies[3].pause();
+          frequencies[2].pause();
+          frequencies[1].pause();
           frequencies[0].loop();
 
         break;

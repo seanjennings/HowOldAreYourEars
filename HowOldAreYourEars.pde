@@ -132,7 +132,7 @@ public void keyPressed() {
     displayFacts = 0;
     visualizer.displayAge = false;
     times = 1;
-    //visualizer.playFrequency(times);
+    visualizer.playFrequency(times);
   }
   if(key == 'f' && started)
   {
