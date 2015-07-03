@@ -99,6 +99,11 @@ public void draw()
   }
 }
 
+void mouseClicked() {
+  //visualizer.period -= 70;
+  //setup();
+}
+
 public void keyPressed() {
   if(key == ENTER && !started)
   {
@@ -133,6 +138,7 @@ public void keyPressed() {
     visualizer.displayAge = false;
     times = 1;
     visualizer.playFrequency(times);
+    visualizer.period = 400.0;
   }
   if(key == 'f' && started)
   {

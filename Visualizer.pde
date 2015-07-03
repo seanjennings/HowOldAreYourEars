@@ -9,21 +9,53 @@ class Visualizer
   boolean displayControls = false;
   int quaterSize;
   
+  int xspacing = 1;   // How far apart should each horizontal location be spaced
+  int w=width+16;;              // Width of entire wave
+  
+  float theta = 0.0;  // Start angle at 0
+  float amplitude = 75.0;  // Height of wave
+  float period = 400.0;  // How many pixels before the wave repeats
+  float dx=(TWO_PI / period) * xspacing;  // Value for incrementing X, a function of period and xspacing
+  float[] yvalues=new float[w/xspacing];  // Using an array to store height values for the wave
+  
   Visualizer()
   {
     line1 = height / 2;
     quaterSize = (width / 4);
   }
   
+  void calcWave() {
+  // Increment theta (try different values for 'angular velocity' here
+  theta += 0.02;
+
+  // For every x value, calculate a y value with sine function
+  float x = theta;
+  for (int i = 0; i < yvalues.length; i++) {
+    yvalues[i] = sin(x)*amplitude;
+    x+=dx;
+  }
+}
+
+void renderWave() {
+  noStroke();
+  fill(255);
+  // A simple way to draw the wave with an ellipse at each location
+  for (int x = 0; x < yvalues.length; x++) {
+    ellipse(x*xspacing, height/2+yvalues[x], 10, 10);
+  }
+}
+  
   //Visualizer
   void animation()
   {
     fractalDraw();
-    stroke(0, 155, 155);
-    for (int i = quaterSize; i < out.bufferSize() - quaterSize; i+= 4)
-    {
-      line( i, height/2 + out.left.get(i)*800, i+1, height/2 + out.left.get(i+1)*800 );
-    }
+    
+    w = width+16;
+    dx = (TWO_PI / period) * xspacing;
+    yvalues = new float[w/xspacing];
+    calcWave();
+    renderWave();
+    println(period);
     
     switch(times)
     {
@@ -125,6 +157,7 @@ class Visualizer
           wave = new Oscil( 12000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[0].pause();
           frequencies[1].loop();
         break;
@@ -137,6 +170,7 @@ class Visualizer
           wave = new Oscil( 15000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[1].pause();
           frequencies[2].loop();
         break;
@@ -149,6 +183,7 @@ class Visualizer
           wave = new Oscil( 16000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[2].pause();
           frequencies[3].loop();
         break;
@@ -161,6 +196,7 @@ class Visualizer
           wave = new Oscil( 17000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[3].pause();
           frequencies[4].loop();
         break;
@@ -173,6 +209,7 @@ class Visualizer
           wave = new Oscil( 18000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[4].pause();
           frequencies[5].loop();
         break;
@@ -185,6 +222,7 @@ class Visualizer
           wave = new Oscil( 19000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
+          visualizer.period -= 60;
           frequencies[5].pause();
           frequencies[6].loop();
         break;
