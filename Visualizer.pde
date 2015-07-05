@@ -8,6 +8,7 @@ class Visualizer
   boolean displayAge = false;
   boolean displayControls = false;
   int quaterSize;
+  WaveformRenderer waveform;
   
   int xspacing = 1;   // How far apart should each horizontal location be spaced
   int w=width+16;;              // Width of entire wave
@@ -22,6 +23,7 @@ class Visualizer
   {
     line1 = height / 2;
     quaterSize = (width / 4);
+    waveform = new WaveformRenderer();
   }
   
   void calcWave() {
@@ -49,6 +51,10 @@ void renderWave() {
   void animation()
   {
     fractalDraw();
+    
+    waveform.draw();
+    
+    stroke(0, 255, 0);
     
     w = width+16;
     dx = (TWO_PI / period) * xspacing;
@@ -133,13 +139,23 @@ void renderWave() {
       
         case 1:
         /*if (wave!=null&&out!=null)
-        
+        {
           wave.unpatch(out);
           //wave.unpatch(out);
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 8000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
+          
+          wave.unpatch(out);
+        }*/
+        frequencies[6].removeListener( waveform );
+        frequencies[5].removeListener( waveform );
+        frequencies[4].removeListener( waveform );
+        frequencies[3].removeListener( waveform );
+        frequencies[2].removeListener( waveform );
+        frequencies[1].removeListener( waveform );
+        frequencies[0].removeListener( waveform );
           frequencies[6].pause();
           frequencies[5].pause();
           frequencies[4].pause();
@@ -147,6 +163,7 @@ void renderWave() {
           frequencies[2].pause();
           frequencies[1].pause();
           frequencies[0].loop();
+          frequencies[0].addListener( waveform );
 
         break;
         case 2:
@@ -156,10 +173,13 @@ void renderWave() {
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 12000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
           visualizer.period -= 60;
-          frequencies[0].pause();
+         */ 
+         frequencies[0].removeListener( waveform );
+         frequencies[0].pause();
           frequencies[1].loop();
+          frequencies[1].addListener( waveform );
         break;
         
         case 3:
@@ -169,10 +189,13 @@ void renderWave() {
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 15000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
           visualizer.period -= 60;
-          frequencies[1].pause();
+         */
+        frequencies[1].removeListener( waveform ); 
+         frequencies[1].pause();
           frequencies[2].loop();
+          frequencies[2].addListener( waveform );
         break;
         
         case 4:
@@ -182,10 +205,14 @@ void renderWave() {
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 16000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
           visualizer.period -= 60;
-          frequencies[2].pause();
+          
+         */
+         frequencies[2].removeListener( waveform );
+         frequencies[2].pause();
           frequencies[3].loop();
+          frequencies[3].addListener( waveform );
         break;
         
         case 5:
@@ -195,10 +222,13 @@ void renderWave() {
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 17000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
           visualizer.period -= 60;
-          frequencies[3].pause();
+         */
+        frequencies[3].removeListener( waveform ); 
+         frequencies[3].pause();
           frequencies[4].loop();
+          frequencies[4].addListener( waveform );
         break;
         
         case 6:
@@ -210,8 +240,11 @@ void renderWave() {
           // patch the Oscil to the output
           wave.patch( out );*/
           visualizer.period -= 60;
-          frequencies[4].pause();
+        
+      frequencies[4].removeListener( waveform );  
+        frequencies[4].pause();
           frequencies[5].loop();
+          frequencies[5].addListener( waveform );
         break;
         
         case 7:
@@ -221,10 +254,13 @@ void renderWave() {
           // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
           wave = new Oscil( 19000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
-          wave.patch( out );*/
+          wave.patch( out );
           visualizer.period -= 60;
-          frequencies[5].pause();
+        */
+      frequencies[5].removeListener( waveform );  
+        frequencies[5].pause();
           frequencies[6].loop();
+          frequencies[6].addListener( waveform );
         break;
   }    
   
