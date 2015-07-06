@@ -1,8 +1,11 @@
 Frequency (Hz)		Average Age (Years)
 ===========================================
-8000			Everyone
-12000			Under 50
-15000			Under 40
-16000			Under 30
-17000			Under 24
-19000			Under 20
+17439			Average Age 21
+17605			Average Age 20
+17771			Average Age 19
+17937			Average Age 18
+18103			Average Age 17
+18269			Average Age 16
+18435			Average Age 15
+18601			Average Age 14
+18767			Average Age 13

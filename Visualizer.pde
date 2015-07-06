@@ -58,31 +58,31 @@ class Visualizer
     switch(times)
     {
       case 1:
-        question(8000,"Every human can hear this!");
+        question(17439,"Average 21");
         break;
       case 2:
-        question(12000,"Around 50");
+        question(17605,"Average 20");
         break;
       case 3:
-        question(14000,"Around 40");
+        question(17771,"Average 19");
         break;
       case 4:
-        question(15000,"Around 35");
+        question(17937,"Average 18");
         break;
       case 5:
-        question(16000,"Around 30");
+        question(18103,"Average 17");
         break;
       case 6:
-        question(16500,"Around 25");
+        question(18269,"Average 16");
         break;
       case 7:
-        question(17600,"Around 20");
+        question(18435,"Average 15");
         break;
       case 8:
-        question(18000,"Around 16");
+        question(18601,"Average 14");
         break;
       case 9:
-        question(19000,"Around 12");
+        question(18767,"Average 13");
         break;
     }
     
