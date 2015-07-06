@@ -87,6 +87,41 @@ void renderWave() {
         question(19000,"Over 20");
         break;
     }
+    /* New switch with data from http://onlinetonegenerator.com/hearingtest-results.html (Graph 2)
+    switch(times)
+    {
+      case 1:
+        question(8000,"Every human can hear this!");
+        break;
+      case 2:
+        question(12000,"Around 50");
+        break;
+      case 3:
+        question(14000,"Around 40");
+        break;
+      case 4:
+        question(15000,"Around 35");
+        break;
+      case 5:
+        question(16000,"Around 30");
+        break;
+      case 6:
+        question(16500,"Around 25");
+        break;
+      case 7:
+        question(17600,"Around 20");
+        break;
+      case 8:
+        question(18000,"Around 16");
+        break;
+      case 9:
+        question(19000,"Around 12");
+        break;
+    }
+    */
+    
+    controls();
+  }
     
     controls();
   }
