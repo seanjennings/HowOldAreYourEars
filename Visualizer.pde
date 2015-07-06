@@ -13,39 +13,12 @@ class Visualizer
   int xspacing = 1;   // How far apart should each horizontal location be spaced
   int w=width+16;;              // Width of entire wave
   
-  float theta = 0.0;  // Start angle at 0
-  float amplitude = 75.0;  // Height of wave
-  float period = 400.0;  // How many pixels before the wave repeats
-  float dx=(TWO_PI / period) * xspacing;  // Value for incrementing X, a function of period and xspacing
-  float[] yvalues=new float[w/xspacing];  // Using an array to store height values for the wave
-  
   Visualizer()
   {
     line1 = height / 2;
     quaterSize = (width / 4);
     waveform = new WaveformRenderer();
   }
-  
-  void calcWave() {
-  // Increment theta (try different values for 'angular velocity' here
-  theta += 0.02;
-
-  // For every x value, calculate a y value with sine function
-  float x = theta;
-  for (int i = 0; i < yvalues.length; i++) {
-    yvalues[i] = sin(x)*amplitude;
-    x+=dx;
-  }
-}
-
-void renderWave() {
-  noStroke();
-  fill(255);
-  // A simple way to draw the wave with an ellipse at each location
-  for (int x = 0; x < yvalues.length; x++) {
-    ellipse(x*xspacing, height/2+yvalues[x], 10, 10);
-  }
-}
   
   //Visualizer
   void animation()
@@ -56,13 +29,7 @@ void renderWave() {
     
     stroke(0, 255, 0);
     
-    w = width+16;
-    dx = (TWO_PI / period) * xspacing;
-    yvalues = new float[w/xspacing];
-    calcWave();
-    renderWave();
-    println(period);
-    
+    /*
     switch(times)
     {
       case 1:
@@ -86,8 +53,8 @@ void renderWave() {
       case 7:
         question(19000,"Over 20");
         break;
-    }
-    /* New switch with data from http://onlinetonegenerator.com/hearingtest-results.html (Graph 2)
+    }*/
+    // New switch with data from http://onlinetonegenerator.com/hearingtest-results.html (Graph 2)
     switch(times)
     {
       case 1:
@@ -118,10 +85,6 @@ void renderWave() {
         question(19000,"Around 12");
         break;
     }
-    */
-    
-    controls();
-  }
     
     controls();
   }
@@ -184,6 +147,8 @@ void renderWave() {
           
           wave.unpatch(out);
         }*/
+        frequencies[8].removeListener( waveform );
+        frequencies[7].removeListener( waveform );
         frequencies[6].removeListener( waveform );
         frequencies[5].removeListener( waveform );
         frequencies[4].removeListener( waveform );
@@ -191,6 +156,8 @@ void renderWave() {
         frequencies[2].removeListener( waveform );
         frequencies[1].removeListener( waveform );
         frequencies[0].removeListener( waveform );
+          frequencies[8].pause();
+          frequencies[7].pause();
           frequencies[6].pause();
           frequencies[5].pause();
           frequencies[4].pause();
@@ -274,7 +241,6 @@ void renderWave() {
           wave = new Oscil( 18000, 0.06f, Waves.SINE );
           // patch the Oscil to the output
           wave.patch( out );*/
-          visualizer.period -= 60;
         
       frequencies[4].removeListener( waveform );  
         frequencies[4].pause();
@@ -296,6 +262,38 @@ void renderWave() {
         frequencies[5].pause();
           frequencies[6].loop();
           frequencies[6].addListener( waveform );
+        break;
+        
+      case 8:
+        /*if (wave!=null&&out!=null)
+          wave.unpatch(out);
+          //wave.unpatch(out);
+          // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
+          wave = new Oscil( 19000, 0.06f, Waves.SINE );
+          // patch the Oscil to the output
+          wave.patch( out );
+          visualizer.period -= 60;
+        */
+      frequencies[6].removeListener( waveform );  
+        frequencies[6].pause();
+          frequencies[7].loop();
+          frequencies[7].addListener( waveform );
+        break;
+        
+      case 9:
+        /*if (wave!=null&&out!=null)
+          wave.unpatch(out);
+          //wave.unpatch(out);
+          // create a sine wave Oscil, set to 440 Hz, at 0.5 amplitude
+          wave = new Oscil( 19000, 0.06f, Waves.SINE );
+          // patch the Oscil to the output
+          wave.patch( out );
+          visualizer.period -= 60;
+        */
+      frequencies[7].removeListener( waveform );  
+        frequencies[7].pause();
+          frequencies[8].loop();
+          frequencies[8].addListener( waveform );
         break;
   }    
   

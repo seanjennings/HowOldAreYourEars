@@ -35,14 +35,16 @@ void setup()
   facts = 1;
   started = false;
   
-  frequencies = new AudioPlayer[7];
+  frequencies = new AudioPlayer[9];
   frequencies[0] = minim.loadFile("8khz.wav", 2048);
   frequencies[1] = minim.loadFile("12khz.wav", 2048);
-  frequencies[2] = minim.loadFile("15khz.wav", 2048);
-  frequencies[3] = minim.loadFile("16khz.wav", 2048);
-  frequencies[4] = minim.loadFile("17khz.wav", 2048);
-  frequencies[5] = minim.loadFile("18khz.wav", 2048);
-  frequencies[6] = minim.loadFile("19khz.wav", 2048);
+  frequencies[2] = minim.loadFile("14khz.wav", 2048);
+  frequencies[3] = minim.loadFile("15khz.wav", 2048);
+  frequencies[4] = minim.loadFile("16khz.wav", 2048);
+  frequencies[5] = minim.loadFile("16.5khz.wav", 2048);
+  frequencies[6] = minim.loadFile("17.6khz.wav", 2048);
+  frequencies[7] = minim.loadFile("18khz.wav", 2048);
+  frequencies[8] = minim.loadFile("19khz.wav", 2048);
   
   font = createFont("SourceCodePro-Regular", (height / 32));
   font2 = createFont("Gulim-48", (height / 15));
@@ -111,7 +113,7 @@ public void keyPressed() {
   if (key == 'y' && firstTime == true && started)
   {
       visualizer.firstRun = true;
-      if (times <= 6)
+      if (times < frequencies.length)
       {
         times++;
       }
@@ -134,7 +136,6 @@ public void keyPressed() {
     visualizer.displayAge = false;
     times = 1;
     visualizer.playFrequency(times);
-    visualizer.period = 400.0;
   }
   if(key == 'f' && started)
   {
