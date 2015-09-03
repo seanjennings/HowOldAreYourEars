@@ -36,15 +36,15 @@ void setup()
   started = false;
   
   frequencies = new AudioPlayer[9];
-  frequencies[0] = minim.loadFile("8khz.wav", 2048);
-  frequencies[1] = minim.loadFile("12khz.wav", 2048);
-  frequencies[2] = minim.loadFile("14khz.wav", 2048);
-  frequencies[3] = minim.loadFile("15khz.wav", 2048);
-  frequencies[4] = minim.loadFile("16khz.wav", 2048);
-  frequencies[5] = minim.loadFile("16.5khz.wav", 2048);
-  frequencies[6] = minim.loadFile("17.6khz.wav", 2048);
-  frequencies[7] = minim.loadFile("18khz.wav", 2048);
-  frequencies[8] = minim.loadFile("19khz.wav", 2048);
+  frequencies[0] = minim.loadFile("17439khz.wav", 2048);
+  frequencies[1] = minim.loadFile("17605khz.wav", 2048);
+  frequencies[2] = minim.loadFile("17771khz.wav", 2048);
+  frequencies[3] = minim.loadFile("17937khz.wav", 2048);
+  frequencies[4] = minim.loadFile("18103khz.wav", 2048);
+  frequencies[5] = minim.loadFile("18269khz.wav", 2048);
+  frequencies[6] = minim.loadFile("18435khz.wav", 2048);
+  frequencies[7] = minim.loadFile("18601khz.wav", 2048);
+  frequencies[8] = minim.loadFile("18767khz.wav", 2048);
   
   font = createFont("SourceCodePro-Regular", (height / 32));
   font2 = createFont("Gulim-48", (height / 15));
