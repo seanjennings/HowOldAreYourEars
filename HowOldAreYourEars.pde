@@ -57,6 +57,10 @@ void setup()
   ditLogo.resize((width / 4), (height / 3));
   facts1 = loadImage("end_slide_1.png");
   facts2 = loadImage("end_slide_2.png");
+  /*
+  AudioPlayer test;
+  test = minim.loadFile("17439khz.mp3");
+  test.play();*/
 }
 
 public void draw()
