@@ -39,7 +39,7 @@ void setup()
   frequencies[0] = minim.loadFile("17439khz.wav", 2048);
   frequencies[1] = minim.loadFile("17605khz.wav", 2048);
   frequencies[2] = minim.loadFile("17771khz.wav", 2048);
-  frequencies[3] = minim.loadFile("17937khz.wav", 2048);
+  frequencies[3] = minim.loadFile("17935khz.wav", 2048);
   frequencies[4] = minim.loadFile("18103khz.wav", 2048);
   frequencies[5] = minim.loadFile("18269khz.wav", 2048);
   frequencies[6] = minim.loadFile("18435khz.wav", 2048);
